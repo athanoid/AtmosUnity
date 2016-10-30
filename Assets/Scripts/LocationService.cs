@@ -8,7 +8,6 @@ public class LocationService : MonoBehaviour
     IEnumerator Start()
     {
 
-    	MyCoordinates atmos = new MyCoordinates();
 
         // First, check if user has location service enabled
         if (!Input.location.isEnabledByUser)
@@ -43,8 +42,6 @@ public class LocationService : MonoBehaviour
             // Access granted and location value could be retrieved
             print("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
         	// set Longitude & Latitude
-        	atmos.Latitude = Input.location.lastData.latitude;
-        	atmos.Longitude = Input.location.lastData.longitude;
         	//test values
         	//atmos.Latitude = 40.714224f;
         	//atmos.Longitude = -73.961452f;

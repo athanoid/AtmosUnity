@@ -8,6 +8,8 @@ public class RequestReports : MonoBehaviour {
 	List<string> placesReports = new List<string>();
 	List<string> placesPredictions = new List<string>();
 
+	string APIkey = "AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ";
+
 	void Start()
 	{
 		fetchReports();
@@ -17,6 +19,7 @@ public class RequestReports : MonoBehaviour {
 	void fetchReports(){
 		StartCoroutine(getPlacesWithReports());
 		StartCoroutine(getPlacesWithPredictions());
+		StartCoroutine(getGeolocation());
 	}
 
 	/*
@@ -71,6 +74,31 @@ public class RequestReports : MonoBehaviour {
 	}
 
 
+	/*
+	* Reverse geocoding request and response (address lookup) 
+	*/	
+	IEnumerator getGeolocation(){ 
+	// API Key: AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ
+	MyCoordinates atmos = new MyCoordinates();
+	float atmosLatitude = atmos.Latitude;
+	float atmosLongitude = atmos.Longitude;
+//		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ");
+		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng="+atmosLatitude.ToString()+","+atmosLongitude.ToString()+"&key="+APIkey);
 
+		
+		yield return request;
+		
+		if (request.error == null || request.error == "")
+		{
+			var N = JSON.Parse(request.text);
+			int addressLength = N["results"].Count;
+
+			Debug.Log("addressLength: "+addressLength+" "+"address_components: "+ N["results"][addressLength]["address_components"].Value.ToString());
+		}
+		else{
+			Debug.Log("WWW error: " + request.error);
+		}
+
+      }
 
 }

@@ -78,13 +78,14 @@ public class RequestReports : MonoBehaviour {
 	* Reverse geocoding request and response (address lookup) 
 	*/	
 	IEnumerator getGeolocation(){ 
-	// API Key: AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ
-	MyCoordinates atmos = new MyCoordinates();
-	float atmosLatitude = atmos.Latitude;
-	float atmosLongitude = atmos.Longitude;
-//		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ");
-		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng="+atmosLatitude.ToString()+","+atmosLongitude.ToString()+"&key="+APIkey);
 
+		//get coordinates
+		MyCoordinates atmos = new MyCoordinates();
+		float atmosLatitude = atmos.Latitude;
+		float atmosLongitude = atmos.Longitude;
+
+//		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ"); //test location
+		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng="+atmosLatitude.ToString()+","+atmosLongitude.ToString()+"&key="+APIkey);
 		
 		yield return request;
 		

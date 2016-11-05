@@ -41,17 +41,17 @@ public class LocationService : MonoBehaviour
         {
             // Access granted and location value could be retrieved
             print("Location: " + Input.location.lastData.latitude + " " + Input.location.lastData.longitude + " " + Input.location.lastData.altitude + " " + Input.location.lastData.horizontalAccuracy + " " + Input.location.lastData.timestamp);
-        	// set Longitude & Latitude
-        	//test values
-        	//atmos.Latitude = 40.714224f;
-        	//atmos.Longitude = -73.961452f;
-        }
 
-        // Stop service if there is no need to query location updates continuously
-        Input.location.Stop();
+        }
+        
     }
 
-//Reverse geocoding request and response (address lookup)
+
+	void OnApplicationQuit(){
+		// Stop service on quit
+		Input.location.Stop();
+		Debug.Log("Exiting...");
+	}
 
 
 

@@ -82,6 +82,7 @@ public class RequestLocation : MonoBehaviour
 
 			if(status == "OK"){
 				myLoc = (N["results"][2]["address_components"][1]["long_name"] + ", " + N["results"][2]["address_components"][2]["long_name"] + ", " + N["results"][2]["address_components"][5]["short_name"]);
+				CancelInvoke("fetchGeo"); Debug.Log("CancelInvoke");
 			}
 			else{
 				myLoc = ("NO DATA");

@@ -7,9 +7,17 @@ public class RequestLocation : MonoBehaviour
 {
 	public static float lat;
 	public static float lon;
-
-	string APIkey = "AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ";
+	
+	TextAsset myapikey;
+	string APIkey;
 	public static string myLoc;
+
+	void Awake(){
+		//import API key from resources
+		myapikey = Resources.Load("APIkey") as TextAsset;
+		APIkey = myapikey.text.ToString();
+		Debug.Log("APIkey: " + APIkey);
+	}
 
 	void Start()
 	{

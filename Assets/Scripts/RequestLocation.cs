@@ -51,10 +51,8 @@ public class RequestLocation : MonoBehaviour
 	IEnumerator getGeolocation(){ 
 		
 		//get coordinates
-		float atmosLatitude = 0f;//37.94057f;
-		float atmosLongitude = 0f;//22.92656f;
-		//		float atmosLatitude = RequestLocation.lat;
-		//		float atmosLongitude = RequestLocation.lon;
+		float atmosLatitude = RequestLocation.lat;
+		float atmosLongitude = RequestLocation.lon;
 		
 		//		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ"); //test location
 		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng="+atmosLatitude.ToString()+","+atmosLongitude.ToString()+"&key="+APIkey);

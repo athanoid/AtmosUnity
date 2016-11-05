@@ -5,12 +5,14 @@ using SimpleJSON;
 
 public class RequestReports : MonoBehaviour {
 
-	List<string> placesReports = new List<string>();
-	List<string> placesPredictions = new List<string>();
+	static List<string> placesReports = new List<string>();
+	static List<string> placesPredictions = new List<string>();
+	public static bool match;
 
 	void Start()
 	{
 		fetchReports();
+//		InvokeRepeating("checkForMatch", 3.0f, 10.0f); // Starting in 3 seconds, and checking for a match with ATMOS every 10 seconds
 	}
 	
 	
@@ -71,6 +73,21 @@ public class RequestReports : MonoBehaviour {
 		}
 	}
 
+
+	public static void checkForMatch(){
+		foreach(string place in placesReports){
+//			Debug.Log(place.ToUpper()+"\n"+ RequestLocation.myLoc.ToUpper());
+			if(RequestLocation.myLoc.ToUpper().Contains(place.ToUpper()) && place != "")
+			{
+				match = true;
+				Debug.Log("There is a report on ATMOS for your location: " + "["+place+"]");
+				break;
+			}
+			else{
+				match = false;
+				Debug.Log("There is NOT a report on ATMOS for your location!");		}
+		}
+	}
 
 
 

@@ -62,7 +62,7 @@ public class RequestLocation : MonoBehaviour
 		float atmosLatitude = RequestLocation.lat;
 		float atmosLongitude = RequestLocation.lon;
 		
-//		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ"); //test location
+//		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng=37.4038825,-122.1162864&key=AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ"); //test location
 		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng="+atmosLatitude.ToString()+","+atmosLongitude.ToString()+"&key="+APIkey);
 		
 		yield return request;
@@ -88,7 +88,9 @@ public class RequestLocation : MonoBehaviour
 			}
 			Debug.Log(myLoc);
 			//Debug.Log("addressLength: "+addressLength+" "+"address_components: "+ N["results"][addressLength]["address_components"].Value.ToString());
-			
+
+			RequestReports.checkForMatch();
+//			Debug.Log("checking for match...");
 		}
 		else{
 			Debug.Log("WWW error: " + request.error);

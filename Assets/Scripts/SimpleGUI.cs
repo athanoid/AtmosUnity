@@ -16,7 +16,7 @@ public class SimpleGUI : MonoBehaviour {
 	void Update () {
 
 //		text.text = "Latitude: "+ Input.location.lastData.latitude + "\nLongitude: "+ Input.location.lastData.longitude + "\nLoc: " + RequestReports.myLoc;
-		text.text = "Latitude: "+ RequestLocation.lat.ToString() + "\nLongitude: "+ RequestLocation.lon.ToString() + "\nLoc: " + RequestLocation.myLoc;
+		text.text = "Latitude: "+ RequestLocation.lat.ToString() + "\nLongitude: "+ RequestLocation.lon.ToString() + "\nLoc: " + RequestLocation.myLoc + "\nAtmos: " + RequestReports.match;
 	}
 	
 

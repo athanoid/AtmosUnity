@@ -16,7 +16,7 @@ public class RequestLocation : MonoBehaviour
 		//import API key from resources
 		myapikey = Resources.Load("APIkey") as TextAsset;
 		APIkey = myapikey.text.ToString();
-		Debug.Log("APIkey: " + APIkey);
+//		Debug.Log("APIkey: " + APIkey);
 	}
 
 	void Start()
@@ -62,7 +62,7 @@ public class RequestLocation : MonoBehaviour
 		float atmosLatitude = RequestLocation.lat;
 		float atmosLongitude = RequestLocation.lon;
 		
-		//		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ"); //test location
+//		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=AIzaSyB8h936q7Jl2H0GpnLfiETzcdRK3b5FPqQ"); //test location
 		WWW request = new WWW("https://maps.googleapis.com/maps/api/geocode/json?latlng="+atmosLatitude.ToString()+","+atmosLongitude.ToString()+"&key="+APIkey);
 		
 		yield return request;
@@ -73,10 +73,10 @@ public class RequestLocation : MonoBehaviour
 			int results = N["results"].Count;
 			string status = N["status"].Value;
 			
-			//			if(status == "ZERO_RESULTS"){
-			//				print (status + " NULL!!!");
-			//			} else{
-			//				print (status + " DATA!!!");
+//			if(status == "ZERO_RESULTS"){
+//				print (status + " NULL!!!");
+//			} else{
+//				print (status + " DATA!!!");
 			
 			int addressComponents = N["results"][0]["address_components"].Count;
 

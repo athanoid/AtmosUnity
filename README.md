@@ -4,6 +4,6 @@
 - Data feching from the Atmos platform for future VR development
 - Reverse geocoding request and response (address lookup) from Google
 
-- You must add you Google API key under \Assets\Resources\APIkey.txt in order to work.
+- You must add your Google API key under \Assets\Resources\APIkey.txt in order to work.
 
 [Atmos website](http://myweather.mobi/)
